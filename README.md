@@ -10,3 +10,6 @@ Run `grunt` for building and `grunt serve` for preview.
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
+
+App is really simple, just enter the name of a place it will fetch you temperature for the region.
+Internally used Weather API of OpenWeatherMap[http://openweathermap.org/]
