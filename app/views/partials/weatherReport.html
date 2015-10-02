@@ -3,6 +3,21 @@
         <h3 class="panel-title">{{convertToDate({date: weatherObject.dt}) | date : dateFormat}}</h3>
     </div>
     <div class="panel-body">
-        Daytime Temperature : {{convertToCelcius({dayTimeTemp: weatherObject.temp.day})}}
+    	<table class="table table-bordered">
+		  <thead>
+	        <tr>
+	          <th>Max Temperature</th>
+	          <th>Min Temperature</th>
+	          <th>Humidity</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+			    <tr class="active">
+			      <td>{{convertToCelcius({dayTimeTemp: weatherObject.temp.max})}}</td>
+			      <td>{{convertToCelcius({dayTimeTemp: weatherObject.temp.min})}}</td>
+			      <td>{{weatherObject.humidity}}</td>
+			    </tr>
+			</tbody>
+      </table>
     </div>
 </div>
