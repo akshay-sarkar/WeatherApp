@@ -16,7 +16,18 @@ angular.module('weatherAppApp')
 
 
     $scope.weatherResult = weatherService.getWeather($scope.city, $scope.days);
+    $scope.weatherResult.$promise.then(function (result) {
+        $scope.weatherResult = result;
+    });
 
+    //calling current weather api
+    weatherService.getCurrentWeather($scope.city);
+
+    $scope.$on('currentWeather:updated', function(event,data) {
+     // you could inspect the data to see if what you care about changed, or just update your own scope
+     $scope.currentWeatherResult = data;
+   });
+      
     $scope.convertToCelcius = function(temp){
     	return Math.round(temp - 273.15);
     };

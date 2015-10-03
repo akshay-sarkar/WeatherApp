@@ -1,13 +1,29 @@
 <p> <a href="#/">Back to Search</a></p>
-
-<h2>{{city}}</h2>
+<hr>
+<h2>Location : {{city}}</h2>
+<hr>
+<h3>Current Weather</h3>
+<hr>
+<div class="panel">
+    <div class="panel-heading">
+        <img ng-src="http://openweathermap.org/img/w/{{currentWeatherResult.weather[0].icon}}.png"/>
+        {{currentWeatherResult.weather[0].description | uppercase}}
+    </div>
+    <div class="panel-body">
+        <p>Current Temperature : {{convertToCelcius(currentWeatherResult.main.temp)}} &deg;C</p>
+        <!-- <p>Pressure : {{currentWeatherResult.main.pressure}}</p> -->
+        <p>Humidity Level: {{currentWeatherResult.main.humidity}}%</p>
+    </div>
+</div>
+<hr>
+<h3>Weather Forecast</h3>
 <hr>
 Days : <a href="#/forecast/2">2</a> | <a href="#/forecast/5">5</a> | <a href="#/forecast/7">7</a>
 <hr>
-<div ng-repeat="w in weatherResult.list">
+<div ng-repeat="weatherObj in weatherResult.list">
     <div class="row">
         <div class="col-md-12">
-            <weather-directive weather-object="w" convert-to-celcius="convertToCelcius(dayTimeTemp)" convert-to-date="convertToDate(date)" date-format="yyyy, MMMM d"></weather-directive>
+            <weather-directive weather-object="weatherObj" convert-to-celcius="convertToCelcius(dayTimeTemp)" convert-to-date="convertToDate(date)" date-format="yyyy, MMMM d"></weather-directive>
         </div>
     </div>
 </div>

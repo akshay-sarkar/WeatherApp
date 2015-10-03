@@ -38,7 +38,7 @@ angular
     .service('cityService', [function() {
         this.city = "Singapore, SG";
     }]) // weatherService for External API call
-    .service('weatherService', ['$resource', function($resource) {
+    .service('weatherService', ['$resource','$http','$rootScope', function($resource, $http, $rootScope) {
 
         this.getWeather = function(city, days) {
 
@@ -53,6 +53,18 @@ angular
             return weatherAPI.get({
                 q: city,
                 cnt: days
+            });
+        }
+        this.getCurrentWeather = function(city){
+            $http({ method: 'GET', url: 'http://api.openweathermap.org/data/2.5/weather?q='+city})
+            .then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+                $rootScope.$broadcast('currentWeather:updated',response.data);
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+                $rootScope.$broadcast('currentWeather:updated',response.data);
             });
         }
     }]) // Custom Directive restricted to Element using template

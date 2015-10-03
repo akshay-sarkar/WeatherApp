@@ -2,22 +2,25 @@
     <div class="panel-heading">
         <h3 class="panel-title">{{convertToDate({date: weatherObject.dt}) | date : dateFormat}}</h3>
     </div>
-    <div class="panel-body">
-    	<table class="table table-bordered">
+    <div class="panel-body table-responsive">
+    	<table class="table table-bordered table-condensed">
 		  <thead>
 	        <tr>
-	          <th>Max Temperature</th>
-	          <th>Min Temperature</th>
+	          <th>Max Temp</th>
+	          <th>Min Temp</th>
 	          <th>Humidity</th>
 	        </tr>
 	      </thead>
 	      <tbody>
 			    <tr class="active">
-			      <td>{{convertToCelcius({dayTimeTemp: weatherObject.temp.max})}}</td>
-			      <td>{{convertToCelcius({dayTimeTemp: weatherObject.temp.min})}}</td>
+			      <td>{{convertToCelcius({dayTimeTemp: weatherObject.temp.max})}} &deg;C</td>
+			      <td>{{convertToCelcius({dayTimeTemp: weatherObject.temp.min})}} &deg;C</td>
 			      <td>{{weatherObject.humidity}}</td>
 			    </tr>
 			</tbody>
       </table>
+      <br>
+      <p>Weather Description : {{weatherObject.weather[0].main}}</p>
+      <p>Wind Speed : {{weatherObject.speed}}</p>
     </div>
 </div>

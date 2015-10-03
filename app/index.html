@@ -23,7 +23,7 @@
     <!-- Add your site or application content here -->
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
-        <div class="container">
+        <div class="container-fluid navbar-inverse">
           <div class="navbar-header">
 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
@@ -46,13 +46,13 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="content">
       <div ng-view=""></div>
     </div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+    <div class="container-fluid">
+      <div class="footer navbar navbar-inverse navbar-fixed-bottom">
+      <p>Weather app created by <a href="mailto:akshay.sarkar.dbit@gmail.com"><span class="glyphicon glyphicon-pencil"></span>Akshay Sarkar</a> using AngularJS.This app uses the API from <a href="http://openweathermap.org/" title="openweathermao.org">Open Weather Map project</a></p>
       </div>
     </div>
 
