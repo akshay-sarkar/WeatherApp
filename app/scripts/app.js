@@ -42,7 +42,7 @@ angular
 
         this.getWeather = function(city, days) {
 
-            var weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily", {
+            var weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily?APPID=cf2de5ccd553fad7ce0fcdbbed806220", {
                 callback: "JSON_CALLBACK"
             }, {
                 get: {
@@ -54,9 +54,9 @@ angular
                 q: city,
                 cnt: days
             });
-        }
+        };
         this.getCurrentWeather = function(city){
-            $http({ method: 'GET', url: 'http://api.openweathermap.org/data/2.5/weather?q='+city})
+            $http({ method: 'GET', url: 'http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID=cf2de5ccd553fad7ce0fcdbbed806220'})
             .then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
@@ -66,7 +66,7 @@ angular
             // or server returns response with an error status.
                 $rootScope.$broadcast('currentWeather:updated',response.data);
             });
-        }
+        };
     }]) // Custom Directive restricted to Element using template
     .directive('weatherDirective', [function() {
         return {
@@ -78,9 +78,6 @@ angular
                 convertToCelcius: '&',
                 convertToDate: '&',
                 dateFormat: '@'
-            },
-            link: function(scope, iElement, iAttrs) {
-
             }
         };
-    }])
+    }]);
